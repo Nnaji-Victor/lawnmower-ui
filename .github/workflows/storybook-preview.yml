@@ -20,13 +20,12 @@ jobs:
         yarn install --frozen-lockfile
         yarn build-storybook
 
-    - name: Set the branch name as env variable
-        uses: nelonoel/branch-name@v1.0.1
-        uses: jsmrcaga/action-netlify-deploy@master
-        with:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          deploy_alias: ${{ env.BRANCH_NAME }}
+    - uses: nelonoel/branch-name@v1.0.1
+    - uses: jsmrcaga/action-netlify-deploy@master
+      with:
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        deploy_alias: ${{ env.BRANCH_NAME }}
 
     - name: Status check
         uses: Sibz/github-status-action@v1.1.1
