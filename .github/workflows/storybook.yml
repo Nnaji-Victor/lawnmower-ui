@@ -1,0 +1,21 @@
+name: Publish Storybook when changed
+on: 
+  push:
+    branches: [main]
+    paths: ["stories/**", "src/components/**"]
+  pull_request: 
+    branches: [main]
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout 
+      uses: actions/checkout@v3
+
+    - name: Build and deploy storybook-static branch
+      uses: JamesIves/github-pages-deploy-action@2.0.3
+      env: 
+        ACCESS_TOKEN: ${{secrets.STORYBOOK_TOKEN}}
+        BRANCH: storybook-static
+        FOLDER: storybook-static
+        BUILD_SCRIPT: npm install && npm run build-storybook
