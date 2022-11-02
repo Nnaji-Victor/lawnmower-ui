@@ -25,11 +25,9 @@ jobs:
       with:
         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        NETLIFY_DEPLOY_TO_PRODUCTION: true
-        NETLIFY_DEPLOY_PRIME_CONTEXT: true
-        NETLIFY_DEPLOY_MESSAGE: "Deployed from GitHub Action to "
+        NETLIFY_DEPLOY_TO_PROD: true
         NETLIFY_DEPLOY_DIR: storybook-static
-        body: |
+        NETLIFY_DEPLOY_MESSAGE: |
           Storybook is deployed successfully please visit the following link
           https://lawnmower-ui-storybook.netlify.app
         reactions: 'rocket'
