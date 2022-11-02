@@ -32,8 +32,8 @@ jobs:
         node_version: 16
         build_command: yarn build-storybook
         NETLIFY_DEPLOY_MESSAGE: |
-          Storybook is deployed successfully please visit the following link
-          https://lawnmower-ui-storybook.netlify.app
+          Preview link successfully created. please visit the following link
+          https://${{ env.BRANCH_NAME }}--lawnmower-ui-storybook.netlify.app.
 
     - name: Status check
       uses: Sibz/github-status-action@v1.1.1
@@ -41,8 +41,5 @@ jobs:
         authToken: ${{ secrets.GITHUB_TOKEN }}
         context: Netlify preview
         state: success
-        target_url: https://${{ env.BRANCH_NAME }}--my-site.netlify.app
-        body: |
-          Preview link successfully created. please visit the following link
-          https://${{ env.BRANCH_NAME }}--lawnmower-ui-storybook.netlify.app
+        target_url: https://${{ env.BRANCH_NAME }}--lawnmower-ui-storybook.netlify.app
         
