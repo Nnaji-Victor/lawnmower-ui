@@ -25,6 +25,8 @@ jobs:
       with:
         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        NETLIFY_DEPLOY_DIR: storybook-static
+        NETLIFY_DEPLOY_TO_PRODUCTION: true
         deploy_alias: ${{ env.BRANCH_NAME }}
 
     - name: Status check
