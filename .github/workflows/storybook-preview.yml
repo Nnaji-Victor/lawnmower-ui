@@ -20,14 +20,19 @@ jobs:
         yarn install --frozen-lockfile
 
     - uses: nelonoel/branch-name@v1.0.1
-    - uses: jsmrcaga/action-netlify-deploy@master
+
+    - name: Deploy preview to Netlify
+      uses: jsmrcaga/action-netlify-deploy@master
       with:
         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        build_directory: storybook-static
         NETLIFY_DEPLOY_TO_PROD: false
+        NETLIFY_DEPLOY_DIR: storybook-static
         deploy_alias: ${{ env.BRANCH_NAME }}
         build_command: yarn build-storybook
+        NETLIFY_DEPLOY_MESSAGE: |
+          Storybook is deployed successfully please visit the following link
+          https://lawnmower-ui-storybook.netlify.app
 
     - name: Status check
       uses: Sibz/github-status-action@v1.1.1
