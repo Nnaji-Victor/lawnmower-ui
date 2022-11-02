@@ -1,3 +1,3 @@
 export * from './provider';
 
-export * from './Box';
+export * from './components/Box';
