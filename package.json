@@ -38,7 +38,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
-  "homepage": "https://github.com/Nnaji-Victor/lawnmower-ui#readme",
+  "homepage": "https://lawnmower-ui-storybook.netlify.app/",
   "devDependencies": {
     "@babel/core": "^7.19.1",
     "@rollup/plugin-typescript": "^8.5.0",
