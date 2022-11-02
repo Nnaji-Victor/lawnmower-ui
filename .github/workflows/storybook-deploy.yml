@@ -1,0 +1,35 @@
+name: Deploy storybook to Netlify
+on: 
+  push:
+    branches:
+      - main
+    paths:
+      - 'stories/**'
+      - 'src/components/**'
+
+if: (!(github.event.action == 'closed' && github.event.pull_request.merged != true))
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout 
+      uses: actions/checkout@v3
+
+    - name: Install and Build
+      run: |
+        yarn install --frozen-lockfile
+        yarn build-storybook
+
+    - name: Deploy 🚀
+      uses: jsmrcaga/action-netlify-deploy@master
+      with:
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        NETLIFY_DEPLOY_TO_PRODUCTION: true
+        NETLIFY_DEPLOY_PRIME_CONTEXT: true
+        NETLIFY_DEPLOY_MESSAGE: "Deployed from GitHub Action to "
+        NETLIFY_DEPLOY_DIR: storybook-static
+        body: |
+          Storybook is deployed successfully please visit the following link
+          https://lawnmower-ui-storybook.netlify.app
+        reactions: 'rocket'
