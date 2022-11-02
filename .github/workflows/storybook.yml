@@ -13,10 +13,15 @@ jobs:
     - name: Checkout 
       uses: actions/checkout@v3
 
-    - name: Build and deploy storybook-static branch
-      uses: JamesIves/github-pages-deploy-action@2.0.3
-      env: 
-        ACCESS_TOKEN: ${{secrets.STORYBOOK_TOKEN}}
-        BUILD_SCRIPT: npm ci && npm run build-storybook
-        BRANCH: storybook
-        FOLDER: storybook-static
+    - name: Install and Build
+      run: |
+        npm install
+        npm run build-storybook
+
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        branch: storybook
+        folder: storybook-static
+        clean: true
+        token: ${{ secrets.STORYBOOK_TOKEN }}
