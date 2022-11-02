@@ -28,13 +28,13 @@ jobs:
         deploy_alias: ${{ env.BRANCH_NAME }}
 
     - name: Status check
-        uses: Sibz/github-status-action@v1.1.1
-        with:
-          authToken: ${{ secrets.GITHUB_TOKEN }}
-          context: Netlify preview
-          state: success
-          target_url: https://${{ env.BRANCH_NAME }}--my-site.netlify.app
-          body: |
-            Preview link successfully created. please visit the following link
-            https://${{ env.BRANCH_NAME }}--lawnmower-ui-storybook.netlify.app
+      uses: Sibz/github-status-action@v1.1.1
+      with:
+        authToken: ${{ secrets.GITHUB_TOKEN }}
+        context: Netlify preview
+        state: success
+        target_url: https://${{ env.BRANCH_NAME }}--my-site.netlify.app
+        body: |
+          Preview link successfully created. please visit the following link
+          https://${{ env.BRANCH_NAME }}--lawnmower-ui-storybook.netlify.app
         
