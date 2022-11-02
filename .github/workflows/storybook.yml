@@ -7,6 +7,9 @@ on:
       - 'src/components/**'
   pull_request: 
     branches: [main]
+    paths: 
+      - 'stories/**'
+      - 'src/components/**'
   workflow_dispatch:
 
 jobs:
@@ -24,7 +27,6 @@ jobs:
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4
       with:
-        branch: storybook
         folder: storybook-static
         clean: true
         token: ${{ secrets.STORYBOOK_TOKEN }}
