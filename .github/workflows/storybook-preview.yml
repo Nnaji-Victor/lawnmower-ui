@@ -27,7 +27,7 @@ jobs:
         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         NETLIFY_DEPLOY_TO_PROD: false
-        NETLIFY_DEPLOY_DIR: storybook-static
+        build_directory: storybook-static
         deploy_alias: ${{ env.BRANCH_NAME }}
         build_command: yarn build-storybook
         NETLIFY_DEPLOY_MESSAGE: |
