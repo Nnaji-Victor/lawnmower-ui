@@ -21,8 +21,8 @@ jobs:
         yarn build-storybook
 
     - name: Set the branch name as env variable
-      - uses: nelonoel/branch-name@v1.0.1
-      - uses: jsmrcaga/action-netlify-deploy@master
+    - uses: nelonoel/branch-name@v1.0.1
+      uses: jsmrcaga/action-netlify-deploy@master
         with:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
