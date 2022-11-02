@@ -15,10 +15,9 @@ jobs:
     - name: Checkout 
       uses: actions/checkout@v3
 
-    - name: Install and Build
+    - name: Install
       run: |
         yarn install --frozen-lockfile
-        yarn build-storybook
 
     - uses: nelonoel/branch-name@v1.0.1
     - uses: jsmrcaga/action-netlify-deploy@master
@@ -28,6 +27,7 @@ jobs:
         build_directory: storybook-static
         NETLIFY_DEPLOY_TO_PROD: false
         deploy_alias: ${{ env.BRANCH_NAME }}
+        build_command: yarn build-storybook
 
     - name: Status check
       uses: Sibz/github-status-action@v1.1.1
